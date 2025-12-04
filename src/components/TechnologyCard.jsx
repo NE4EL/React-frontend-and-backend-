@@ -1,18 +1,25 @@
-import React from "react";
-import "./TechnologyCard.css";
+import './TechnologyCard.css';
 
-function TechnologyCard({ title, description, status }) {
-  const getStatusClass = () => {
-    if (status === "completed") return "card completed";
-    if (status === "in-progress") return "card in-progress";
-    return "card not-started";
+function TechnologyCard({ id, title, description, status, onStatusChange }) {
+  
+  const handleClick = () => {
+    let newStatus = "";
+
+    if (status === "not-started") newStatus = "in-progress";
+    else if (status === "in-progress") newStatus = "completed";
+    else newStatus = "not-started";
+
+    onStatusChange(id, newStatus);
   };
 
   return (
-    <div className={getStatusClass()}>
-      <h2>{title}</h2>
+    <div 
+      className={`technology-card status-${status}`}
+      onClick={handleClick}
+    >
+      <h3>{title}</h3>
       <p>{description}</p>
-      <span className="status">{status}</span>
+      <span className="status-label">{status}</span>
     </div>
   );
 }
