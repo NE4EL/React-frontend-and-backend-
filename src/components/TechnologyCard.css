@@ -1,32 +1,51 @@
 .technology-card {
-  border: 2px solid #ccc;
-  border-left-width: 10px;
-  padding: 15px;
-  margin: 10px 0;
-  border-radius: 8px;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  border: 2px solid #eee;
+  transition: 0.2s;
   cursor: pointer;
-  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
 }
 
 .technology-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.status-not-started {
-  border-left-color: #ff6b6b;
-}
-
-.status-in-progress {
-  border-left-color: #4ecdc4;
-}
-
-.status-completed {
-  border-left-color: #45b7d1;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
 }
 
 .status-label {
-  font-size: 14px;
-  font-weight: bold;
-  color: #555;
+  margin-top: 10px;
+  display: inline-block;
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.status-not-started {
+  border-color: #ccc;
+}
+
+.status-not-started .status-label {
+  background: #f1f2f6;
+  color: #636e72;
+}
+
+.status-in-progress {
+  border-color: #0984e3;
+}
+
+.status-in-progress .status-label {
+  background: #dfe6e9;
+  color: #0984e3;
+}
+
+.status-completed {
+  border-color: #00b894;
+}
+
+.status-completed .status-label {
+  background: #dfe6e9;
+  color: #00b894;
 }

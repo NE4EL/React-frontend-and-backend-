@@ -1,30 +1,27 @@
 import './TechnologyCard.css';
 
-function TechnologyCard({ id, title, description, status, notes, onStatusChange, onNotesClick }) {
-  
-  const handleClick = () => {
-    let newStatus = "";
+function TechnologyCard({ technology, onStatusChange, onNotesChange }) {
+  const { id, title, description, status, notes } = technology;
 
-    if (status === "not-started") newStatus = "in-progress";
-    else if (status === "in-progress") newStatus = "completed";
-    else newStatus = "not-started";
-
-    onStatusChange(id, newStatus);
-  };
+  const nextStatus =
+    status === "not-started" ? "in-progress" :
+    status === "in-progress" ? "completed" :
+    "not-started";
 
   return (
-    <div 
-      className={`technology-card status-${status}`}
-    >
-      <div onClick={handleClick}>
-        <h3>{title}</h3>
-        <p>{description}</p>
-        <span className="status-label">{status}</span>
-      </div>
+    <div className={`technology-card status-${status}`}>
+      <h3>{title}</h3>
+      <p>{description}</p>
 
-      <button className="notes-btn" onClick={() => onNotesClick(id)}>
-        ✏️ Заметки
+      <button onClick={() => onStatusChange(id, nextStatus)}>
+        Статус: {status}
       </button>
+
+      <textarea
+        placeholder="Заметки..."
+        value={notes}
+        onChange={(e) => onNotesChange(id, e.target.value)}
+      />
     </div>
   );
 }
