@@ -1,6 +1,6 @@
 import './TechnologyCard.css';
 
-function TechnologyCard({ id, title, description, status, onStatusChange }) {
+function TechnologyCard({ id, title, description, status, notes, onStatusChange, onNotesClick }) {
   
   const handleClick = () => {
     let newStatus = "";
@@ -15,11 +15,16 @@ function TechnologyCard({ id, title, description, status, onStatusChange }) {
   return (
     <div 
       className={`technology-card status-${status}`}
-      onClick={handleClick}
     >
-      <h3>{title}</h3>
-      <p>{description}</p>
-      <span className="status-label">{status}</span>
+      <div onClick={handleClick}>
+        <h3>{title}</h3>
+        <p>{description}</p>
+        <span className="status-label">{status}</span>
+      </div>
+
+      <button className="notes-btn" onClick={() => onNotesClick(id)}>
+        ✏️ Заметки
+      </button>
     </div>
   );
 }
