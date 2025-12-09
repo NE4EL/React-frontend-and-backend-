@@ -1,27 +1,38 @@
-import './TechnologyCard.css';
+import TechnologyResources from "./TechnologyResources";
 
-function TechnologyCard({ technology, onStatusChange, onNotesChange }) {
-  const { id, title, description, status, notes } = technology;
-
-  const nextStatus =
-    status === "not-started" ? "in-progress" :
-    status === "in-progress" ? "completed" :
-    "not-started";
-
+function TechnologyCard({ tech, onStatusChange, loadTechnologyResources }) {
   return (
-    <div className={`technology-card status-${status}`}>
-      <h3>{title}</h3>
-      <p>{description}</p>
+    <div className={`technology-card status-${tech.status}`}>
+      <h3>{tech.title}</h3>
+      <p>{tech.description}</p>
+      <p>
+        <strong>Категория:</strong> {tech.category} | <strong>Сложность:</strong> {tech.difficulty}
+      </p>
 
-      <button onClick={() => onStatusChange(id, nextStatus)}>
-        Статус: {status}
-      </button>
+      {/* Кнопки изменения статуса */}
+      <div className="status-buttons">
+        <button
+          className={tech.status === "not-started" ? "active" : ""}
+          onClick={() => onStatusChange(tech.id, "not-started")}
+        >
+          Не начато
+        </button>
+        <button
+          className={tech.status === "in-progress" ? "active" : ""}
+          onClick={() => onStatusChange(tech.id, "in-progress")}
+        >
+          В процессе
+        </button>
+        <button
+          className={tech.status === "completed" ? "active" : ""}
+          onClick={() => onStatusChange(tech.id, "completed")}
+        >
+          Завершено
+        </button>
+      </div>
 
-      <textarea
-        placeholder="Заметки..."
-        value={notes}
-        onChange={(e) => onNotesChange(id, e.target.value)}
-      />
+      {/* Ресурсы */}
+      <TechnologyResources tech={tech} onLoadResources={loadTechnologyResources} />
     </div>
   );
 }
