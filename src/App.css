@@ -1,10 +1,10 @@
-/* --- Общие стили --- */
+/* Общие стили приложения */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f5f7fa;
+  font-family: 'Inter', sans-serif;
+  background-color: #f4f7fb;
   margin: 0;
   padding: 0;
-  color: #333;
+  color: #2c3e50;
 }
 
 .app {
@@ -13,250 +13,238 @@ body {
   padding: 20px;
 }
 
-.app-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+header {
+  text-align: center;
   margin-bottom: 30px;
 }
 
-.app-header h1 {
-  color: #4CAF50;
+header h1 {
+  font-size: 2rem;
+  color: #007bff;
 }
 
-.refresh-btn {
-  background-color: #2196F3;
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.refresh-btn:hover {
-  background-color: #1976D2;
-}
-
-.app-error {
-  background-color: #fdecea;
-  color: #e74c3c;
-  padding: 15px;
-  border-radius: 6px;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.spinner {
-  border: 5px solid #f3f3f3;
-  border-top: 5px solid #4CAF50;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  margin: 20px auto;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* --- Поиск --- */
-.tech-search-box {
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.tech-search-input {
-  width: 300px;
-  max-width: 90%;
-  padding: 10px 12px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-  transition: 0.2s;
-}
-
-.tech-search-input:focus {
-  outline: none;
-  border-color: #4CAF50;
-  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
-}
-
-/* --- Быстрые действия --- */
-.quick-actions {
-  margin-bottom: 20px;
-  padding: 15px;
-  background-color: #e8f5e9;
-  border-radius: 6px;
-}
-
-.quick-actions h3 {
-  margin-top: 0;
-  color: #388E3C;
-}
-
-.action-buttons button {
-  margin-right: 10px;
-  margin-bottom: 8px;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  color: white;
-  transition: 0.2s;
-}
-
-.action-buttons button:first-child {
-  background-color: #4CAF50;
-}
-
-.action-buttons button:first-child:hover {
-  background-color: #388E3C;
-}
-
-.action-buttons button:last-child {
-  background-color: #FF9800;
-}
-
-.action-buttons button:last-child:hover {
-  background-color: #F57C00;
-}
-
-/* --- Список технологий --- */
-.technologies-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-.technology-card {
+/* Карточки технологий */
+.technology-item, .technology-card {
   background-color: white;
-  border-radius: 8px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
   padding: 20px;
-  border-left: 5px solid #ccc;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  margin-bottom: 15px;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.technology-card:hover {
+.technology-item:hover, .technology-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
 }
 
-.technology-card h3 {
-  margin-top: 0;
-  color: #333;
+.technology-item h3, .technology-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+  color: #007bff;
 }
 
-.technology-card p {
-  margin: 6px 0;
-  font-size: 14px;
+.technology-item p, .technology-card p {
+  font-size: 0.95rem;
   color: #555;
-}
-
-/* --- Цвета по статусу --- */
-.status-not-started {
-  border-left-color: #f44336; /* Красный */
-}
-
-.status-in-progress {
-  border-left-color: #FF9800; /* Оранжевый */
-}
-
-.status-completed {
-  border-left-color: #4CAF50; /* Зеленый */
-}
-
-/* --- Кнопки статуса --- */
-.status-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin: 10px 0;
-}
-
-.status-buttons button {
-  flex: 1;
-  margin-right: 5px;
-  padding: 6px 0;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  transition: 0.2s;
-  font-size: 12px;
-  color: white;
-}
-
-.status-buttons button:last-child {
-  margin-right: 0;
-}
-
-.status-buttons button.active {
-  font-weight: bold;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-.status-buttons button:nth-child(1) { background-color: #f44336; }
-.status-buttons button:nth-child(2) { background-color: #FF9800; }
-.status-buttons button:nth-child(3) { background-color: #4CAF50; }
-
-.status-buttons button:hover {
-  opacity: 0.85;
-}
-
-/* --- Ресурсы технологии --- */
-.tech-resources {
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid #eee;
-}
-
-.tech-resources h4 {
-  margin: 0 0 5px 0;
-  font-size: 14px;
-  color: #333;
-}
-
-.tech-resources ul {
-  padding-left: 20px;
   margin: 5px 0;
 }
 
-.tech-resources li {
-  margin-bottom: 4px;
-  font-size: 13px;
-}
-
-.tech-resources a {
-  color: #2196F3;
-  text-decoration: none;
-}
-
-.tech-resources a:hover {
-  text-decoration: underline;
-}
-
-.tech-resources button {
-  margin-top: 6px;
-  padding: 5px 10px;
+/* Кнопки статусов */
+.technology-item button, .technology-card button {
+  padding: 6px 12px;
   border: none;
-  border-radius: 5px;
-  background-color: #2196F3;
-  color: white;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 0.85rem;
+  margin-right: 8px;
+  color: white;
+  transition: background-color 0.2s;
 }
 
-.tech-resources button:hover {
-  background-color: #1976D2;
+button.status-not-started {
+  background-color: #f44336;
 }
 
-/* --- Пустое состояние --- */
-.empty-state {
+button.status-in-progress {
+  background-color: #ff9800;
+}
+
+button.status-completed {
+  background-color: #4caf50;
+}
+
+/* Кнопки редактирования/добавления */
+.manager-header button, .btn-primary, .btn-secondary {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.manager-header button, .btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.manager-header button:hover, .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Форма технологий */
+.technology-form {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.technology-form h2 {
+  margin-top: 0;
+  color: #007bff;
+}
+
+.technology-form .form-group {
+  margin-bottom: 15px;
+}
+
+.technology-form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.technology-form input,
+.technology-form textarea,
+.technology-form select {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.technology-form input:focus,
+.technology-form textarea:focus,
+.technology-form select:focus {
+  border-color: #007bff;
+}
+
+.technology-form .error {
+  border-color: #f44336;
+}
+
+.technology-form .error-message {
+  color: #f44336;
+  font-size: 0.85rem;
+  margin-top: 3px;
+}
+
+.technology-form .form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.technology-form .add-resource,
+.technology-form .remove-resource {
+  background-color: #007bff;
+  color: white;
+  border-radius: 6px;
+  padding: 4px 10px;
+  border: none;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+.technology-form .remove-resource {
+  background-color: #f44336;
+}
+
+.technology-form .add-resource:hover,
+.technology-form .remove-resource:hover {
+  opacity: 0.9;
+}
+
+/* Импорт/Экспорт */
+.data-importer, .data-exporter, .roadmap-importer {
+  background-color: white;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 15px 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+label.file-label {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: #ff9800;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+label.file-label:hover {
+  background-color: #f57c00;
+}
+
+/* Поиск */
+input.search-input {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+}
+
+/* Статистика */
+.statistics {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+  background-color: #e3f2fd;
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+
+.statistics div {
+  font-weight: 500;
+}
+
+/* Дроп зона */
+.drop-zone {
+  border: 2px dashed #007bff;
+  border-radius: 12px;
+  padding: 20px;
   text-align: center;
-  padding: 40px;
-  font-size: 16px;
-  color: #777;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.drop-zone.dragging {
+  background-color: #e3f2fd;
+  border-color: #0056b3;
+}
+
+.import-error {
+  color: #f44336;
+  margin-top: 8px;
 }

@@ -1,51 +1,127 @@
 .technology-card {
-  background: white;
-  border-radius: 12px;
+  background: linear-gradient(145deg, #ffffff, #f1f5f9);
+  border-radius: 16px;
   padding: 20px;
-  border: 2px solid #eee;
-  transition: 0.2s;
-  cursor: pointer;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
+  margin-bottom: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .technology-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
-.status-label {
-  margin-top: 10px;
-  display: inline-block;
-  font-size: 13px;
-  padding: 4px 10px;
-  border-radius: 6px;
-  text-transform: capitalize;
+.technology-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.4rem;
+  color: #007bff;
   font-weight: 600;
 }
 
-.status-not-started {
-  border-color: #ccc;
+.technology-card p {
+  font-size: 0.95rem;
+  color: #444;
+  margin: 5px 0;
+  line-height: 1.4;
 }
 
-.status-not-started .status-label {
-  background: #f1f2f6;
-  color: #636e72;
+.technology-card .tech-meta {
+  font-size: 0.85rem;
+  color: #777;
+  margin-top: 10px;
 }
 
-.status-in-progress {
-  border-color: #0984e3;
+.technology-card .tech-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.status-in-progress .status-label {
-  background: #dfe6e9;
-  color: #0984e3;
+.technology-card button {
+  padding: 6px 14px;
+  border-radius: 12px;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: white;
+  transition: all 0.2s ease;
 }
 
-.status-completed {
-  border-color: #00b894;
+button.status-not-started {
+  background-color: #f44336;
 }
 
-.status-completed .status-label {
-  background: #dfe6e9;
-  color: #00b894;
+button.status-in-progress {
+  background-color: #ff9800;
+}
+
+button.status-completed {
+  background-color: #4caf50;
+}
+
+.technology-card button:hover {
+  opacity: 0.9;
+}
+
+/* Дополнительно: иконки статусов */
+button.status-not-started::before {
+  content: "⏳ ";
+}
+
+button.status-in-progress::before {
+  content: "🔄 ";
+}
+
+button.status-completed::before {
+  content: "✅ ";
+}
+
+/* Отдельный блок для ресурсов внутри карточки */
+.technology-card .tech-resources {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.technology-card .tech-resources h4 {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  color: #007bff;
+}
+
+.technology-card .tech-resources ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.technology-card .tech-resources li {
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+.technology-card .tech-resources a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.technology-card .tech-resources a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.technology-card .tech-resources button {
+  margin-top: 10px;
+  background-color: #007bff;
+}
+
+.technology-card .tech-resources button:hover {
+  background-color: #0056b3;
 }

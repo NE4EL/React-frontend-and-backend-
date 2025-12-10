@@ -1,30 +1,19 @@
-import TechnologyCard from "./TechnologyCard";
-
-function TechnologyList({ technologies, setTechnologies, loadTechnologyResources }) {
-  if (!technologies || technologies.length === 0) {
-    return (
-      <div className="empty-state">
-        <p>Технологий пока нет.</p>
-      </div>
-    );
-  }
-
-  // Функция изменения статуса отдельной технологии
-  const handleStatusChange = (techId, newStatus) => {
-    setTechnologies((prev) =>
-      prev.map((t) => (t.id === techId ? { ...t, status: newStatus } : t))
-    );
+function TechnologyList({ technologies, setTechnologies, onEdit }) {
+  const toggleStatus = (id) => {
+    setTechnologies(prev => prev.map(t => t.id === id ? { ...t, status: t.status === 'not-started' ? 'in-progress' : t.status === 'in-progress' ? 'completed' : 'not-started' } : t));
   };
 
   return (
-    <div className="technologies-grid">
-      {technologies.map((tech) => (
-        <TechnologyCard
-          key={tech.id}
-          tech={tech}
-          onStatusChange={handleStatusChange}
-          loadTechnologyResources={loadTechnologyResources}
-        />
+    <div>
+      {technologies.map(t => (
+        <div key={t.id}>
+          <h3>{t.title}</h3>
+          <p>{t.description}</p>
+          <button onClick={() => toggleStatus(t.id)}>
+            {t.status === 'completed' ? '✅ Завершено' : t.status === 'in-progress' ? '🔄 В процессе' : '⏳ Не начато'}
+          </button>
+          <button onClick={() => onEdit(t)}>Редактировать</button>
+        </div>
       ))}
     </div>
   );
